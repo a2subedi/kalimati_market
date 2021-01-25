@@ -7,9 +7,9 @@
 
  - BeautifulSoup4, ~~Selenium~~ (),
 
- # To scrape run:
- `python3 scraper.py`
-
 ## Databases: 
  - MySQL
 
+
+## To scrape run:
+ `python3 scraper.py`
