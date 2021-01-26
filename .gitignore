@@ -1,4 +1,5 @@
 /drivers
 /old_data
-db.config.py
+config.py
 sketchs.py
+/__pycache__

@@ -12,6 +12,9 @@ from helpers import *
 url = "https://kalimatimarket.gov.np/index.php/lang/en"
 
 db = MySQLdb.connect(host,user,passwd,database) # Imported from config
+c = db.cursor()
+c.execute(create_commodity_table)
+c.close()
 
 then = time.time()
 try:
@@ -27,12 +30,13 @@ try:
     # initialize empty strings for variables
     name = unit = min_rate = max_rate = avg_rate = rate_date = ''
     for row in rows:
+        print(row)
         cols = row.findAll('td')
         name = cols[0].text.strip()
         unit = cols[1].text.strip()
-        min_rate = int(cols[2].text.replace('Rs. ','').strip())
-        max_rate = int(cols[3].text.replace('Rs. ','').strip())
-        avg_rate = int(cols[4].text.replace('Rs. ','').strip())
+        min_rate = float(cols[2].text.replace('Rs. ','').strip())
+        max_rate = float(cols[3].text.replace('Rs. ','').strip())
+        avg_rate = float(cols[4].text.replace('Rs. ','').strip())
         rate_date = date.today()
 
         c = db.cursor()
